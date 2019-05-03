@@ -1,3 +1,26 @@
-.list-group-item {
-  line-height: 2.5;
+
+  Color Scheme{
+  color: #967D69;
+  color: #92B9BD;
+  color: #A8D4AD;
+  color: #F2F79E;
+  color: #E8EC67;
+  }
+
+
+#main-header{
+  text-align: center;
 }
+
+#parallax1{
+  background-color: #967D69;
+}
+
+#parallax2{
+  background-color: #92B9BD;
+}
+
+#parallax3{
+  background-color: #A8D4AD;
+}
+

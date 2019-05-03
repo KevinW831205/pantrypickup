@@ -1,33 +1,59 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
-      </div>
+<nav>
+  <div class="nav-wrapper">
+    <div class="container">
+      <a href="#" class="brand-logo">Pantry Pickup</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="/donation">Claim a Donation</a></li>
+        <li><a href="#">Be a Donater</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="main">
+  <div class="section white">
+    <div class="row container">
+      <h2 class="header">Welcome to Pantry Pickup</h2>
+      <p class="grey-text text-darken-3 lighten-3">Brief Description</p>
+    </div>
+  </div>
+
+  <div class="parallax-container">
+    <div class="parallax" id="parallax1">
+      {{!-- parallax image here --}}
+    </div>
+  </div>
+
+  <div class="section white">
+    <div class="row container">
+      <h2 class="header">What is Pantry Pickup</h2>
+      <p class="grey-text text-darken-3 lighten-3">Some mission statement</p>
+    </div>
+  </div>
+
+  <div class="parallax-container">
+    <div class="parallax" id="parallax2">
+      {{!-- parallax image here --}}
+    </div>
+  </div>
+
+  <div class="section white">
+    <div class="row container">
+      <h2 class="header">Become a Donator</h2>
+      <p class="grey-text text-darken-3 lighten-3">Motivational statment</p>
+    </div>
+  </div>
+
+
+  <div class="parallax-container">
+    <div class="parallax" id="parallax3">
+      {{!-- parallax image here --}}
     </div>
   </div>
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
 <script src="/js/index.js"></script>
