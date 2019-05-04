@@ -8,12 +8,12 @@
   }
 
 
-#main-header{
+.page-header{
   text-align: center;
 }
 
 #parallax1{
-  background-color: #967D69;
+  
 }
 
 #parallax2{
@@ -22,5 +22,14 @@
 
 #parallax3{
   background-color: #A8D4AD;
+}
+
+.claim-btn{
+  background-color: #E8EC67;
+  color: black;
+}
+
+.p-text{
+  font-size: 24px;
 }
 

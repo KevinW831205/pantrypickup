@@ -21,9 +21,19 @@ module.exports = function(app) {
   });
 
   app.get("/donation", function(req, res) {
+    //loading donations page
     db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
       res.render("donation", {
-        example: dbExample
+        //load in donation object to render in handlebars
+      });
+    });
+  });
+
+  app.get("/donator", function(req, res) {
+    //loading donations page
+    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
+      res.render("donator", {
+        //load in donation object to render in handlebars
       });
     });
   });
