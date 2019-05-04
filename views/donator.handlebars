@@ -1,0 +1,63 @@
+<div class="back-img2"></div>
+
+<nav>
+    <div class="nav-wrapper">
+        <div class="container">
+            <a href="#" class="brand-logo">Pantry Pickup</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="/">Home</a></li>
+                <li><a href="/donation">Claim a Donation</a></li>
+                <li class="active"><a href="#">Make a Donation</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container content">
+    <h1 class="page-header">Donator</h1>
+
+    <div class="row">
+        <form class="col s12" id="donation">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="Enter Your Name" id="name" type="text" class="validate" required minlength="1">
+                    <label for="name">Your Name</label>
+                </div>
+            </div>
+
+
+            <div>
+                <h6 class="header">Item Information</h6>
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input placeholder="Enter Item Name" id="item-name" type="text" class="validate" required
+                            minlength="1">
+                        <label for="item-name">Item name</label>
+                    </div>
+
+                    <div class="input-field col s4">
+                        <select>
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="1">S</option>
+                            <option value="2">M</option>
+                            <option value="3">L</option>
+                        </select>
+                        <label>Size</label>
+                    </div>
+
+                    <div class="input-field col s4">
+                        <input type="text" class="datepicker" placeholder="Date" id="expiration">
+                        <label for="expiration">Expiration Date</label>
+                    </div>
+                </div>
+
+            </div>
+
+            <button type="submit" form="donation" value="Submit"
+                class="waves-effect waves-light btn claim-btn">Submit</button>
+        </form>
+    </div>
+
+
+</div>
+
+<script src="/js/donator.js"></script>
