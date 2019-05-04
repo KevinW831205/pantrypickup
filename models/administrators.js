@@ -1,14 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
 
-	var User = sequelize.define("User", {
-		first_name: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [1]
-			}
-		},
-		last_name: {
+	var Admin = sequelize.define("Admin", {
+		pantry_name: {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
@@ -37,5 +30,5 @@ module.exports = function (sequelize, DataTypes) {
 			}
 		}
 	});
-	return User;
+	return Admin;
 };
