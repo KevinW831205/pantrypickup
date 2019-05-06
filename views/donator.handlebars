@@ -13,10 +13,30 @@
     </div>
 </nav>
 <div class="container content">
-    <h1 class="page-header">Donator</h1>
+    <h1 class="page-header color-scheme1">Start a Donation</h1>
+    <p>
+        Motivational Statement
+    </p>
 
     <div class="row">
-        <form class="col s12" id="donation">
+        <form class="col s12" id="user">
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="Enter a UserName" id="username" type="text" class="validate" required
+                        minlength="1">
+                    <label for="name">Username</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="Enter a UserName" id="username" type="password" class="validate" required
+                        minlength="6">
+                    <label for="password">Password (At Least 6 Characters)</label>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="input-field col s12">
                     <input placeholder="Enter Your Name" id="name" type="text" class="validate" required minlength="1">
@@ -24,7 +44,20 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="abc123@somemail.com" type="email" id="email" pattern=".+@.+.com" size="30" required>
+                    <label for="email">E-mail Address</label>
+                </div>
+            </div>
 
+            <button type="submit" form="user" value="Submit"
+                class="waves-effect waves-light btn claim-btn">Submit</button>
+        </form>
+    </div>
+
+    <div class="row">
+        <form class="col s12" id="donation">
             <div>
                 <h6 class="header">Item Information</h6>
                 <div class="row">

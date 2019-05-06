@@ -24,10 +24,8 @@ nav{
 .content{
   background-color: white;
   margin-top: 20px;
-  padding: 20px 30px 0px 30px;
+  padding: 20px 30px 40px 30px;
 }
-
-
 
 .back-img1{
   background-image: url("/images/alexandra-kikot-1238354-unsplash.jpg");
@@ -67,7 +65,10 @@ th{
 
 td{
   font-family: 'Roboto', sans-serif;
+}
 
+.brand-logo{
+  font-family:'Roboto Slab', serif;
 }
 
 .color-scheme1{
