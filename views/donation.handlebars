@@ -1,67 +1,72 @@
-<div class="backdiv1">
-    <div class="back-img1"></div>
+<div class="back-img1"></div>
 
-    <nav>
-        <div class="nav-wrapper">
-            <div class="container">
-                <a href="#" class="brand-logo">Pantry Pickup</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="/">Home</a></li>
-                    <li class="active"><a href="#">Claim a Donation</a></li>
-                    <li><a href="/donator">Make a Donation</a></li>
-                </ul>
+<nav>
+    <div class="nav-wrapper">
+        <div class="container">
+            <a href="#" class="brand-logo">Pantry Pickup</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="/">Home</a></li>
+                <li class="active"><a href="#">Claim a Donation</a></li>
+                <li><a href="/donator">Make a Donation</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container content">
+    <h1 class="page-header color-scheme1">Donations</h1>
+    <p>Some description maybe</p>
+    <br>
+    <br>
+
+    <table class="highlight">
+        <div class="row">
+            <div class="col s9"></div>
+            <div class="input-field col s3" id="donation-sort">
+                <select>
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="1">Expiration Date</option>
+                    <option value="2">Size</option>
+                    <option value="3">Item</option>
+                    <option value="4">Donater</option>
+                </select>
+                <label>Sort By</label>
             </div>
         </div>
-    </nav>
-    <div class="container content">
-        <h1 class="page-header color-scheme1">Donations</h1>
-        <p>Some description maybe</p>
-        <br>
-        <br>
 
-        <table class="highlight">
-            <div class="row">
-                <div class="col s9"></div>
-                <div class="input-field col s3" id="donation-sort">
-                    <select>
-                        <option value="" disabled selected>Choose your option</option>
-                        <option value="1">Expiration Date</option>
-                        <option value="2">Size</option>
-                        <option value="3">Item</option>
-                        <option value="4">Donater</option>
-                    </select>
-                    <label>Sort By</label>
-                </div>
-            </div>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Donater</th>
+                <th>Expiration</th>
+                <th>Nutritional Value</th>
+                <th></th>
+            </tr>
+        </thead>
+        {{!-- Each Donations  --}}
 
-            <thead>
-                <tr>
-                    <th>Item</th>
-                    <th>Donater</th>
-                    <th>Expiration</th>
-                    <th>Nutritional Value</th>
-                    <th></th>
-                </tr>
-            </thead>
-            {{!-- Each Donations  --}}
+        {{!-- Example remove when proper object is passedin --}}
 
-            {{!-- Example remove when proper object is passedin --}}
+        <tbody>
+            <tr>
+                <td>Chicken Breasts</td>
+                <td>Bob</td>
+                <td>5/2/2019</td>
+                <td><a class="modal-trigger" href="#map">Location</a></td>
+                <td><button class="waves-effect waves-light btn claim-btn">Claim</button></td>
+            </tr>
+        </tbody>
 
-            <tbody>
-                <tr>
-                    <td>Chicken Breasts</td>
-                    <td>Bob</td>
-                    <td>5/2/2019</td>
-                    <td><a>Details</a></td>
-                    <td><button class="waves-effect waves-light btn claim-btn">Claim</button></td>
-                </tr>
-            </tbody>
+        {{!-- End of Example stop removing --}}
 
-            {{!-- End of Example stop removing --}}
+    </table>
 
-        </table>
+</div>
+
+<div id="map" class="modal">
+    <div class="modal-content" >
 
     </div>
 </div>
+
 
 <script src="/js/donation.js"></script>
