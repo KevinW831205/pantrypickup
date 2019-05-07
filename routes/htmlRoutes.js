@@ -20,6 +20,9 @@ module.exports = function (app) {
     //loading donations page
     res.render("donator", {
       //load in donation object to render in handlebars
+
+      //login state for rendering register/sign in
+      login: false
     });
   });
 

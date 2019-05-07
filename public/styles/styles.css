@@ -21,11 +21,21 @@ nav{
   background-color: #F2F79E;
 } */
 
+.text-center{
+  text-align: center;
+}
+
 .content{
   background-color: white;
   margin-top: 20px;
+  margin-bottom: 40px;
   padding: 20px 30px 40px 30px;
 }
+
+/* .fullopa::before{
+  opacity: 1;
+} */
+
 
 .back-img1{
   background-image: url("/images/alexandra-kikot-1238354-unsplash.jpg");
