@@ -1,5 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
-
+module.exports = function(sequelize, DataTypes) {
   var Food = sequelize.define("Food", {
     donator: {
       type: DataTypes.STRING,
