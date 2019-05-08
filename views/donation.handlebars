@@ -48,11 +48,19 @@
 
             <tbody>
                 <tr>
+                    {{#each donations}}
+                    {{#unless donated}}
+                    <td>{{this.itemname}}</td>
+                    <td>{{this.donatorName}}</td>
+                    <td>{{this.expirationDate}}</td>
+                   
                     <td>Chicken Breasts</td>
                     <td>Bob</td>
                     <td>5/2/2019</td>
                     <td><a>Details</a></td>
                     <td><button class="waves-effect waves-light btn claim-btn">Claim</button></td>
+                    {{/unless}}
+                    {{/each}}
                 </tr>
             </tbody>
 

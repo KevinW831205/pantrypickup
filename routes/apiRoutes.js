@@ -14,10 +14,9 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       }
-    })
-      .then(function(dbFood) {
-        res.json(dbFood);
-      });
+    }).then(function(dbFood) {
+      res.json(dbFood);
+    });
   });
 
   // POST route for saving a new donator
@@ -29,10 +28,9 @@ module.exports = function(app) {
       size: req.body.size,
       expiration: req.body.expiration,
       donated: req.body.donated
-    })
-      .then(function(dbFood) {
-        res.json(dbFood);
-      });
+    }).then(function(dbFood) {
+      res.json(dbFood);
+    });
   });
 
   // DELETE route for deleting donators
@@ -41,22 +39,19 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       }
-    })
-      .then(function(dbFood) {
-        res.json(dbFood);
-      });
+    }).then(function(dbFood) {
+      res.json(dbFood);
+    });
   });
 
   // PUT route for updating posts
   app.put("/api/donations", function(req, res) {
-    db.Food.update(req.body,
-      {
-        where: {
-          id: req.body.id
-        }
-      })
-      .then(function(dbFood) {
-        res.json(dbFood);
-      });
+    db.Food.update(req.body, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function(dbFood) {
+      res.json(dbFood);
+    });
   });
 };

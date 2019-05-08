@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "Asdflkjh1!",
-    "database": "proj2_db",
+    "password": "5361869LoL",
+    "database": "pantrydb",
     "host": "localhost",
     "dialect": "mysql"
   },
