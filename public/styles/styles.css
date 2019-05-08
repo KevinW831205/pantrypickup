@@ -21,12 +21,20 @@ nav{
   background-color: #F2F79E;
 } */
 
+.text-center{
+  text-align: center;
+}
+
 .content{
   background-color: white;
   margin-top: 20px;
-  padding: 20px 30px 0px 30px;
+  margin-bottom: 40px;
+  padding: 20px 30px 40px 30px;
 }
 
+/* .fullopa::before{
+  opacity: 1;
+} */
 
 
 .back-img1{
@@ -67,7 +75,10 @@ th{
 
 td{
   font-family: 'Roboto', sans-serif;
+}
 
+.brand-logo{
+  font-family:'Roboto Slab', serif;
 }
 
 .color-scheme1{

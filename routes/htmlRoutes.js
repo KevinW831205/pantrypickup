@@ -12,6 +12,7 @@ module.exports = function(app) {
     });
   });
 
+
   // Load donator page and pass in an donator by id
   app.get("/donator/:id", function(req, res) {
     db.Food.findOne({ where: { id: req.params.id } }).then(function(dbFood) {
@@ -34,11 +35,13 @@ module.exports = function(app) {
   });
 
   app.get("/donator", function(req, res) {
+
     Food.selectAll(function(data) {
       var hdbrsObj = {
         donations: data
       };
       console.log(hdbrsObj);
+
     //loading donations page
     res.render("donator", hdbrsObj
       //load in donation object to render in handlebars
