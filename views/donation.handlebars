@@ -47,22 +47,20 @@
         {{!-- Example remove when proper object is passedin --}}
 
 
-            <tbody>
-                <tr>
-                    {{#each donations}}
-                    {{#unless donated}}
-                    <td>{{this.itemname}}</td>
-                    <td>{{this.donatorName}}</td>
-                    <td>{{this.expirationDate}}</td>
-                   
-                    <td>Chicken Breasts</td>
-                    <td>Bob</td>
-                    <td>5/2/2019</td>
-                    <td><a>Details</a></td>
-                    <td><button class="waves-effect waves-light btn claim-btn">Claim</button></td>
-                    {{/unless}}
-                    {{/each}}
-                </tr>
+        <tbody>
+            {{#each donation}}
+            {{#if donated}}
+            <tr>
+
+                <td>{{this.food}}</td>
+                <td>{{this.donator}}</td>
+                <td>{{this.expiration}}</td>
+                <td><a class="modal-trigger" href="#map">Location</a></td>
+                <td><button class="waves-effect waves-light btn claim-btn">Claim</button></td>
+            </tr>
+
+            {{/if}}
+            {{/each}}
 
             <tr>
                 <td>Chicken Breasts</td>
@@ -81,7 +79,7 @@
 </div>
 
 <div id="map" class="modal">
-    <div class="modal-content" >
+    <div class="modal-content">
 
     </div>
 </div>

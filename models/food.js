@@ -24,17 +24,19 @@ module.exports = function(sequelize, DataTypes) {
     donated: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
-    }   
+    }
   });
 
   Food.associate = function(models) {
     Food.belongsTo(models.User, {
       onDelete: "cascade",
       foreignKey: {
-        allowNull: false
+        allowNull: true
       }
     });
   };
   
   return Food;
 };
+
+
