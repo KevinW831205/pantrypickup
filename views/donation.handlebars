@@ -54,8 +54,9 @@
                 <td>{{this.food}}</td>
                 <td>{{this.User.name}}</td>
                 <td>{{this.expiration}}</td>
-                <td><a class="modal-trigger donation-address" data-address="{{this.User.address}}" href="#map-modal">Location</a></td>
-                <td><button class="waves-effect waves-light btn claim-btn" data-itemid="{{this.id}}">Claim</button></td>
+                <td><a class="modal-trigger donation-address" data-address="{{this.User.address}}"
+                        href="#map-modal">Location</a></td>
+                <td><button class="waves-effect waves-light btn claim-btn modal-trigger" data-itemid="{{this.id}}" href="#claim-modal">Claim</button></td>
             </tr>
 
             {{/unless}}
@@ -66,16 +67,22 @@
         {{!-- End of Example stop removing --}}
 
     </table>
-    <div id="map"></div>
 
 </div>
 
 <div id="map-modal" class="modal">
     <div class="modal-content">
-
+        <p class="p-text text-center" id="map-address">Address</p>
         {{!-- put map here --}}
+        <div id="map"></div>
+    </div>
+</div>
 
-
+<div id="claim-modal" class="modal">
+    <div class="modal-content">
+        <p class="p-text text-center" id="map-address">Test</p>
+        {{!-- put map here --}}
+        <div id="map"></div>
     </div>
 </div>
 
