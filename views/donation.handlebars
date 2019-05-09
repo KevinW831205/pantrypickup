@@ -56,7 +56,9 @@
                 <td>{{this.expiration}}</td>
                 <td><a class="modal-trigger donation-address" data-address="{{this.User.address}}"
                         href="#map-modal">Location</a></td>
-                <td><button class="waves-effect waves-light btn claim-btn modal-trigger" data-itemid="{{this.id}}" href="#claim-modal">Claim</button></td>
+                {{!--  make modal-trigger if adding feature--}}
+                <td><button class="waves-effect waves-light btn claim-btn" data-itemid="{{this.id}}"
+                        href="#claim-modal">Claim</button></td>
             </tr>
 
             {{/unless}}
@@ -82,7 +84,6 @@
     <div class="modal-content">
         <p class="p-text text-center" id="map-address">Test</p>
         {{!-- put map here --}}
-        <div id="map"></div>
     </div>
 </div>
 

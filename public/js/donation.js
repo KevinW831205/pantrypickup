@@ -11,13 +11,13 @@ function initMap() {
 $(function () {
   M.AutoInit();
 
-  // $(".claim-btn").on("click", function () {
-  //   $.ajax("/api/food/" + $(this).data("itemid"), {
-  //     type: "PUT"
-  //   }).then(function (DBuser) {
-  //     location.reload();
-  //   });
-  // });
+  $(".claim-btn").on("click", function () {
+    $.ajax("/api/food/" + $(this).data("itemid"), {
+      type: "PUT"
+    }).then(function (DBuser) {
+      location.reload();
+    });
+  });
 
   $(".donation-address").on("click", function () {
     console.log($(this).data("address"))

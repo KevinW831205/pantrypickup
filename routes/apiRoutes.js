@@ -11,7 +11,6 @@ module.exports = function (app) {
   });
 
   app.put("/api/user/login", function (req, res) {
-    console.log(req.body)
     db.User.findAll({
       where: {
         user_name: req.body.username,
