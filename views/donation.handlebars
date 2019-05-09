@@ -38,7 +38,7 @@
                 <th>Item</th>
                 <th>Donater</th>
                 <th>Expiration</th>
-                <th>Nutritional Value</th>
+                <th>Address</th>
                 <th></th>
             </tr>
         </thead>
@@ -47,44 +47,39 @@
         {{!-- Example remove when proper object is passedin --}}
 
 
-            <tbody>
-                <tr>
-                    {{#each donations}}
-                    {{#unless donated}}
-                    <td>{{this.itemname}}</td>
-                    <td>{{this.donatorName}}</td>
-                    <td>{{this.expirationDate}}</td>
-                   
-                    <td>Chicken Breasts</td>
-                    <td>Bob</td>
-                    <td>5/2/2019</td>
-                    <td><a>Details</a></td>
-                    <td><button class="waves-effect waves-light btn claim-btn">Claim</button></td>
-                    {{/unless}}
-                    {{/each}}
-                </tr>
-
+        <tbody>
+            {{#each donation}}
+            {{#unless donated}}
             <tr>
-                <td>Chicken Breasts</td>
-                <td>Bob</td>
-                <td>5/2/2019</td>
-                <td><a class="modal-trigger" href="#map">Location</a></td>
-                <td><button class="waves-effect waves-light btn claim-btn">Claim</button></td>
+                <td>{{this.food}}</td>
+                <td>{{this.User.name}}</td>
+                <td>{{this.expiration}}</td>
+                <td><a class="modal-trigger donation-address" data-address="{{this.User.address}}" href="#map-modal">Location</a></td>
+                <td><button class="waves-effect waves-light btn claim-btn" data-itemid="{{this.id}}">Claim</button></td>
             </tr>
+
+            {{/unless}}
+            {{/each}}
         </tbody>
 
 
         {{!-- End of Example stop removing --}}
 
     </table>
+    <div id="map"></div>
 
 </div>
 
-<div id="map" class="modal">
-    <div class="modal-content" >
+<div id="map-modal" class="modal">
+    <div class="modal-content">
+
+        {{!-- put map here --}}
+
 
     </div>
 </div>
 
-
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCy0Avf_rMUpFznmhG5aGXK1Krj3CAxuBA&callback=initMap"
+    type="text/javascript"></script>
 <script src="/js/donation.js"></script>

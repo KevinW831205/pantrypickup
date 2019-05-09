@@ -30,6 +30,8 @@ nav{
   margin-top: 20px;
   margin-bottom: 40px;
   padding: 20px 30px 40px 30px;
+  overflow-y: auto;
+  height: 800px;
 }
 
 /* .fullopa::before{
@@ -132,3 +134,33 @@ td{
   font-size: 24px;
 }
 
+#repeated-user{
+  color:red;
+  display: none;
+}
+
+#login-fail{
+  color: red;
+  display: none;
+  text-align: center;
+}
+
+#login-button{
+  width:100%;
+}
+
+#successful-donate{
+  color:#A8D4AD;
+  display: none;
+}
+
+/* map */
+#map {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  height: 400px;
+  width: 650px;
+}
+
+/* end map */

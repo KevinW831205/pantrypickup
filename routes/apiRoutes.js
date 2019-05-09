@@ -1,57 +1,89 @@
 var db = require("../models");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Get all donations
-  app.get("/api/donations/", function(req, res) {
-    db.Food.findAll({}).then(function(dbFood) {
-      res.json(dbFood);
+  app.get("/api/user", function (req, res) {
+    db.User.findAll({
+      attributes: ["user_name"]
+    }).then(function (dbUser) {
+      res.json(dbUser)
     });
   });
 
-  // Get route for retrieving a single donator
-  app.get("/api/donations/:id", function(req, res) {
-    db.Food.findOne({
+  app.put("/api/user/login", function (req, res) {
+    console.log(req.body)
+    db.User.findAll({
       where: {
-        id: req.params.id
+        user_name: req.body.username,
+        password: req.body.password
       }
-    }).then(function(dbFood) {
-      res.json(dbFood);
-    });
-  });
-
-  // POST route for saving a new donator
-  app.post("/api/donations", function(req, res) {
-    console.log(req.body);
-    db.Food.create({
-      donator: req.body.donator,
-      food: req.body.food,
-      size: req.body.size,
-      expiration: req.body.expiration,
-      donated: req.body.donated
-    }).then(function(dbFood) {
-      res.json(dbFood);
+    }).then(function (dbUser) {
+      res.json(dbUser)
     });
   });
 
   // DELETE route for deleting donators
-  app.delete("/api/donations/:id", function(req, res) {
+  app.delete("/api/donations/:id", function (req, res) {
     db.Food.destroy({
       where: {
         id: req.params.id
       }
-    }).then(function(dbFood) {
+    }).then(function (dbFood) {
       res.json(dbFood);
     });
   });
 
   // PUT route for updating posts
-  app.put("/api/donations", function(req, res) {
+  app.put("/api/donations", function (req, res) {
     db.Food.update(req.body, {
       where: {
         id: req.body.id
       }
-    }).then(function(dbFood) {
+    }).then(function (dbFood) {
       res.json(dbFood);
     });
   });
+
+  app.post("/api/user", function (req, res) {
+    db.User.create(req.body).then(function (result) {
+      res.json(result);
+    });
+  })
+
+  app.put("/api/user/:id", function (req, res) {
+    db.User.update(
+      req.body,
+      {
+        where: {
+          id: req.params.id
+        }
+      }
+    ).then(function (result) {
+      res.json(result);
+    });
+  })
+
+  app.post("/api/donation", function (req, res) {
+    db.Food.create(req.body).then(function (result) {
+      res.json(result);
+    });
+  })
+
+  // food has been
+  app.put("/api/food/:id", function (req, res) {
+    db.Food.update(
+      { donated: true },
+      {
+        where: {
+          id: req.params.id
+        }
+      }
+    ).then(function (result) {
+      res.json(result);
+    });
+  })
+
+
 };
+
+
