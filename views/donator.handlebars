@@ -78,26 +78,30 @@
                         <input placeholder="Enter Item Name" id="item-name" type="text" class="validate" required
                             minlength="1">
                         <label for="item-name">Item name</label>
+                        <div id="item-name-validation">Enter a item name</div>
                     </div>
 
                     <div class="input-field col s4">
                         <select id="item-size" required minlength="1">
-                            <option value="" disabled selected>Choose your option</option>
+                            <option value="" id="size-default" selected>Choose your option</option>
                             <option value="S">S</option>
                             <option value="M">M</option>
                             <option value="L">L</option>
                         </select>
                         <label>Size</label>
+                        <div id="item-size-validation">Select a Size</div>
                     </div>
 
                     <div class="input-field col s4">
                         <input type="text" class="datepicker" placeholder="Date" id="expiration">
                         <label for="expiration">Expiration Date</label>
+                        <div id="expiration-validation">Select an Expiration Date</div>
                     </div>
                 </div>
 
                 <button type="submit" form="donation" value="Submit" class="waves-effect waves-light btn claim-btn"
-                    id="submit-donation" data-userid={{user.id}}>Submit</button> <span id="successful-donate">Your Donation has been Submitted</span>
+                    id="submit-donation" data-userid={{user.id}}>Submit</button> <span id="successful-donate">Your
+                    Donation has been Submitted</span>
 
         </form>
     </div>

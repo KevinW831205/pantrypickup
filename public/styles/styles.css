@@ -154,6 +154,13 @@ td{
   display: none;
 }
 
+
+#item-name-validation, #item-size-validation, #expiration-validation{
+  color: red;
+  display: none;
+}
+
+
 /* map */
 #map {
   margin-left: auto;

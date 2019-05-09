@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
   // initialize materialize
   M.AutoInit();
@@ -7,24 +8,48 @@ $(document).ready(function () {
   });
 
   $("#submit-donation").on("click", function (event) {
-    event.preventDefault();
-    var donationInfo = {};
+    event.preventDefault()
 
-    donationInfo.food = $("#item-name").val().trim();
-    donationInfo.size = $("#item-size").val().trim();
-    donationInfo.expiration = $("#expiration").val().trim();
-    donationInfo.UserId = $(this).data("userid");
-    console.log(donationInfo); //userid here
+    $("#item-name-validation").hide();
+    $("#item-size-validation").hide();
+    $("#expiration-validation").hide();
 
-    $.ajax("/api/donation", {
-      type: "POST",
-      data: donationInfo
-    }).then(function () {
-      $("#successful-donate").show();
-      $("#item-name").val("");
-      $("#item-size").val("");
-      $("#expiration").val("");
-    });
+    var validation = true;
+    if ($("#item-name").val().trim() == "") {
+      $("#item-name-validation").show();
+      validation = false;
+    }
+
+    if ($("#item-size").val() == "") {
+      $("#item-size-validation").show();
+      validation = false;
+    }
+
+    if ($("#expiration").val().trim() == "") {
+      $("#expiration-validation").show();
+      validation = false;
+    }
+
+    if (validation) {
+      var donationInfo = {};
+
+      donationInfo.food = $("#item-name").val().trim();
+      donationInfo.size = $("#item-size").val();
+      donationInfo.expiration = $("#expiration").val().trim();
+      donationInfo.UserId = $(this).data("userid");
+      console.log(donationInfo); //userid here
+
+
+      $.ajax("/api/donation", {
+        type: "POST",
+        data: donationInfo
+      }).then(function () {
+        $("#successful-donate").show();
+        $("#item-name").val("");
+        $("#item-size").val("");
+        $("#expiration").val("");
+      });
+    }
   });
 
 

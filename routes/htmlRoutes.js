@@ -7,7 +7,6 @@ module.exports = function (app) {
       var hdbrsObj = {
         donations: data
       };
-      console.log(hdbrsObj);
       res.render("index", hdbrsObj);
     });
   });
@@ -28,7 +27,6 @@ module.exports = function (app) {
         admin: administrator
       }
 
-      console.log(renderObj)
       //loading donations page
       res.render(
         "donation",
