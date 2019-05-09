@@ -13,7 +13,9 @@ module.exports = function (app) {
   });
 
   app.get("/donation", function (req, res) {
-    db.Food.findAll({}).then(function (data) {
+    db.Food.findAll({
+      include: [db.User]
+    }).then(function (data) {
       var foodArr = [];
       for (var i = 0; i < data.length; i++) {
         foodArr.push(data[i].dataValues)
@@ -25,6 +27,7 @@ module.exports = function (app) {
         donation: foodArr,
         admin: administrator
       }
+
       console.log(renderObj)
       //loading donations page
       res.render(
@@ -34,7 +37,7 @@ module.exports = function (app) {
       );
     });
   });
-  
+
 
   app.get("/donator", function (req, res) {
 

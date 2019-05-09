@@ -22,20 +22,6 @@ module.exports = function (app) {
     });
   });
 
-
-  // Get route for retrieving a single donator
-  app.get("/api/donations/:id", function (req, res) {
-    db.Food.findOne({
-      where: {
-        id: req.params.id
-      }
-    }).then(function (dbFood) {
-      res.json(dbFood);
-    });
-  });
-
-
-
   // DELETE route for deleting donators
   app.delete("/api/donations/:id", function (req, res) {
     db.Food.destroy({
@@ -58,14 +44,46 @@ module.exports = function (app) {
     });
   });
 
-
-
-
   app.post("/api/user", function (req, res) {
     db.User.create(req.body).then(function (result) {
       res.json(result);
     });
   })
+
+  app.put("/api/user/:id", function (req, res) {
+    db.User.update(
+      req.body,
+      {
+        where: {
+          id: req.params.id
+        }
+      }
+    ).then(function (result) {
+      res.json(result);
+    });
+  })
+
+  app.post("/api/donation", function (req, res) {
+    db.Food.create(req.body).then(function (result) {
+      res.json(result);
+    });
+  })
+
+  // food has been
+  app.put("/api/food/:id", function (req, res) {
+    db.Food.update(
+      { donated: true },
+      {
+        where: {
+          id: req.params.id
+        }
+      }
+    ).then(function (result) {
+      res.json(result);
+    });
+  })
+
+
 };
 
 

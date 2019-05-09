@@ -22,7 +22,6 @@ module.exports = function (sequelize, DataTypes) {
 
   Food.associate = function (models) {
     Food.belongsTo(models.User, {
-      onDelete: "cascade",
       foreignKey: {
         allowNull: false
       }

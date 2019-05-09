@@ -13,23 +13,24 @@ $(document).ready(function () {
     donationInfo.food = $("#item-name").val().trim();
     donationInfo.size = $("#item-size").val().trim();
     donationInfo.expiration = $("#expiration").val().trim();
-    donationInfo.Userid = //userid here
-      console.log(donationInfo)
+    donationInfo.UserId = $(this).data("userid");
+    console.log(donationInfo); //userid here
+
+    $.ajax("/api/donation", {
+      type: "POST",
+      data: donationInfo
+    }).then(function () {
+      $("#successful-donate").show();
+      $("#item-name").val("");
+      $("#item-size").val("");
+      $("#expiration").val("");
+    });
   });
 
 
-
-  $.ajax(window.location.href+"/info", {
-    type: "GET"
-  }).then(function (DBuser) {
-    console.log(DBuser)
-  })
-
-
+  //register
   $("#create-user").on("click", function (event) {
-
     var registerInfo = {};
-
     registerInfo.user_name = $("#reg-username").val().trim();
     registerInfo.name = $("#reg-name").val().trim();
     registerInfo.password = $("#reg-password").val();
@@ -41,13 +42,9 @@ $(document).ready(function () {
     address += ", " + $("#reg-zip").val().trim();
     registerInfo.address = address;
 
-
-
-
     $.ajax("/api/user", {
       type: "GET"
     }).then(function (DBusernames) {
-      console.log(DBusernames)
       // checking if username exist
       for (var i = 0; i < DBusernames.length; i++) {
         if (DBusernames[i].user_name === registerInfo.user_name) {
@@ -66,12 +63,12 @@ $(document).ready(function () {
     });
   });
 
+  //login
   $("#login-button").on("click", function (event) {
     event.preventDefault();
     var loginInfo = {}
     loginInfo.username = $("#username").val();
     loginInfo.password = $("#password").val();
-    console.log(loginInfo)
     $.ajax("/api/user/login", {
       type: "PUT",
       data: loginInfo
@@ -81,7 +78,23 @@ $(document).ready(function () {
       } else {
         $("#login-fail").show()
       }
-    })
-  })
+    });
+  });
 
+  $("#submit-address-edit").on("click", function (event) {
+    if ($("#edit-address").val().trim() && $("#edit-city").val().trim() && $("#edit-state").val() && $("#edit-zip").val().trim()
+    ) {
+      var address = $("#edit-address").val().trim();
+      address += ", " + $("#edit-city").val().trim();
+      address += ", " + $("#edit-state").val();
+      address += ", " + $("#edit-zip").val().trim();
+      $.ajax("/api/user/" + $(this).data("userid"), {
+        type: "PUT",
+        data: { address: address }
+      }).then(function (result) {
+        location.reload();
+      });
+    }
+
+  });
 });
