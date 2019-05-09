@@ -12,15 +12,6 @@ module.exports = function (app) {
     });
   });
 
-  // Load donator page and pass in an donator by id
-  app.get("/donator/:id", function (req, res) {
-    db.Food.findOne({ where: { id: req.params.id } }).then(function (dbFood) {
-      res.render("donator", {
-        newDonator: dbFood
-      });
-    });
-  });
-
   app.get("/donation", function (req, res) {
     db.Food.findAll({}).then(function (data) {
       var foodArr = [];
@@ -43,14 +34,29 @@ module.exports = function (app) {
       );
     });
   });
+  
 
   app.get("/donator", function (req, res) {
 
     //loading donations page
-    res.render("donator", {login:true}
+    res.render("donator", { login: false }
       //load in donation object to render in handlebars
     );
     // Render 404 page for any unmatched routes
+  });
+
+  app.get("/donator/login/:id", function (req, res) {
+
+    db.User.findOne({
+      where: { id: req.params.id }
+    }).then(function (userDB) {
+
+      res.render("donator", {
+        user: userDB.dataValues,
+        login: true
+      })
+    })
+
   });
 
   app.get("*", function (req, res) {
@@ -59,6 +65,8 @@ module.exports = function (app) {
 
 };
 
+
+// // Temporary seeding
 // db.Food.create({
 //   donator: "donator",
 //   food: "Cheese",

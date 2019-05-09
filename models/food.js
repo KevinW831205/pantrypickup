@@ -1,17 +1,10 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var Food = sequelize.define("Food", {
-    donator: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1,50]
-      }
-    },
     food: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1,100]
+        len: [1, 100]
       }
     },
     size: {
@@ -27,15 +20,15 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Food.associate = function(models) {
+  Food.associate = function (models) {
     Food.belongsTo(models.User, {
       onDelete: "cascade",
       foreignKey: {
-        allowNull: true
+        allowNull: false
       }
     });
   };
-  
+
   return Food;
 };
 

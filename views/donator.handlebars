@@ -38,21 +38,30 @@
         <div class="row">
             <div class="col s2"></div>
             <div class="input-field col s4">
-                <input placeholder="Enter a UserName" id="username" type="text" class="validate" required minlength="1">
+                <input placeholder="UserName" id="username" type="text" class="validate" required minlength="1">
                 <label for="name">Username</label>
             </div>
             <div class="input-field col s4">
-                <input placeholder="Enter a UserName" id="username" type="password" class="validate" required
-                    minlength="1">
+                <input placeholder="Password" id="password" type="password" class="validate" required minlength="1">
                 <label for="password">Password (At Least 6 Characters)</label>
             </div>
+        </div>
 
-            <button class="waves-effect waves-light btn modal-trigger" href="#register">Login</button>
+        <div class="row">
+            <div class="col s4"></div>
+            <div class="col s4">
+                <button class="waves-effect waves-light btn" form="login" id="login-button">Login</button>
+                <div id="login-fail">Unrecognized Username or Password</div>
+
+            </div>
         </div>
     </form>
     {{/unless}}
 
+
     {{#if login}}
+
+    <div>{{user.address}}</div>
 
     <div class="row">
         <form class="col s12" id="donation">
@@ -80,20 +89,65 @@
                         <label for="expiration">Expiration Date</label>
                     </div>
                 </div>
+
+                <button type="submit" form="donation" value="Submit" class="waves-effect waves-light btn claim-btn"
+                    id="submit-donation">Submit</button>
+        </form>
+    </div>
+    {{/if}}
+</div>
+
+<!-- Modal -->
+<div id="register" class="modal">
+    <div class="modal-content" id="register-content">
+        <h4 class="header">Create an Account</h4>
+        <div class="row">
+            <form class="col s12" id="user">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Enter a UserName" id="reg-username" type="text" class="regform validate"
+                            required minlength="1">
+                        <label for="reg-username">Username</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Enter a Password" id="reg-password" type="password" class="regform validate"
+                            required minlength="6">
+                        <label for="reg-password">Password (At Least 6 Characters)</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Enter Your Name" id="reg-name" type="text" class="validate" required
+                            minlength="1">
+                        <label for="name">Your Name</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="abc123@somemail.com" type="email" id="reg-email" pattern=".+@.+.com"
+                            size="30" required>
+                        <label for="email">E-mail Address</label>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input placeholder="101 main street" id="adress" type="text" class="validate" required
+                        <input placeholder="101 main street" id="reg-address" type="text" class="validate" required
                             minlength="1">
-                        <label for="address"></label>
+                        <label for="address">Address</label>
                     </div>
 
                     <div class="input-field col s2">
-                        <input placeholder="City" id="city" type="text" class="validate" required minlength="1">
+                        <input placeholder="City" id="reg-city" type="text" class="validate" required minlength="1">
                         <label for="city">City</label>
                     </div>
 
                     <div class="input-field col s2">
-                        <select id="state">
+                        <select id="reg-state">
                             <option value="" disabled selected>State</option>
                             <option value="AL">Alabama (AL)</option>
                             <option value="AK">Alaska (AK)</option>
@@ -151,59 +205,14 @@
                     </div>
 
                     <div class="input-field col s2">
-                        <input placeholder="Zip" id="zip" type="text" class="validate" required minlength="1">
+                        <input placeholder="Zip" id="reg-zip" type="text" class="validate" required minlength="1">
                         <label for="zip">Zip</label>
                     </div>
                 </div>
-            </div>
 
-            <button type="submit" form="donation" value="Submit"
-                class="waves-effect waves-light btn claim-btn">Submit</button>
-        </form>
-    </div>
-    {{/if}}
-</div>
 
-<!-- Modal -->
-<div id="register" class="modal">
-    <div class="modal-content">
-        <h4 class="header">Create an Account</h4>
-        <div class="row">
-            <form class="col s12" id="user">
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input placeholder="Enter a UserName" id="reg-username" type="text" class="validate" required
-                            minlength="1">
-                        <label for="reg-username">Username</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input placeholder="Enter a Password" id="reg-password" type="password" class="validate"
-                            required minlength="6">
-                        <label for="reg-password">Password (At Least 6 Characters)</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input placeholder="Enter Your Name" id="name" type="text" class="validate" required
-                            minlength="1">
-                        <label for="name">Your Name</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input placeholder="abc123@somemail.com" type="email" id="email" pattern=".+@.+.com" size="30"
-                            required>
-                        <label for="email">E-mail Address</label>
-                    </div>
-                </div>
-
-                <button type="submit" form="user" value="Submit"
-                    class="waves-effect waves-light btn claim-btn" id="submit-donation">Submit</button>
+                <button form="user" class="waves-effect waves-light btn" id="create-user">Submit</button>
+                <div id="repeated-user">Username exists</div>
             </form>
         </div>
     </div>
