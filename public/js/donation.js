@@ -24,7 +24,7 @@ $(function () {
     $("#map-address").text("Donator Address: " + $(this).data("address"));
 
     var queryAddress = $(this).data("address")
-    $.ajax("http://www.mapquestapi.com/geocoding/v1/address?key=0VGGljyGVppz87Gov6NbLiCOc9J712eY&location=" + queryAddress,
+    $.ajax("https://www.mapquestapi.com/geocoding/v1/address?key=0VGGljyGVppz87Gov6NbLiCOc9J712eY&location=" + queryAddress,
       {
         type: "GET"
       }
