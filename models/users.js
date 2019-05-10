@@ -1,25 +1,19 @@
+
 module.exports = function (sequelize, DataTypes) {
 
 	var User = sequelize.define("User", {
-		first_name: {
+		name: {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-				len: [1,50]
-			}
-		},
-		last_name: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [1,50]
+				len: [1, 30]
 			}
 		},
 		user_name: {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-				len: [1,10]
+				len: [1, 30]
 			}
 		},
 		address: {
@@ -40,7 +34,7 @@ module.exports = function (sequelize, DataTypes) {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-				len: [1, 10]
+				len: [1, 30]
 			}
 		},
 		admin: {
@@ -48,12 +42,12 @@ module.exports = function (sequelize, DataTypes) {
 			defaultValue: false
 		}
 	});
-	  
-	  User.associate = function(models) {
+
+	User.associate = function (models) {
 		User.hasMany(models.Food, {
-		  onDelete: "cascade"
+			onDelete: "cascade"
 		});
-	  };
-	
+	};
+
 	return User;
 };

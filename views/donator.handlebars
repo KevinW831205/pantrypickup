@@ -13,18 +13,64 @@
     </div>
 </nav>
 <div class="container content">
-    <h1 class="page-header">Donator</h1>
+    <h1 class="page-header color-scheme1">Start a Donation</h1>
+    <p class="p-text text-center">
+        Begin making the world a better place by reducing food waste.
+    </p>
+    <br><br>
+
+
+    <!-- Modal Trigger for register/login with pantry-pickup-->
+    {{#unless login}}
+    <p class="p-text text-center">
+        Begin Donating by Creating an Account.<br><br>
+        <button class="waves-effect waves-light btn modal-trigger" href="#register">Register</button>
+
+    </p>
+    <p class="p-text text-center">
+        <strong>-- or --</strong>
+        <br>
+        Logging in if You Have an Account
+    </p>
+
+    <form class="col s12" id="login">
+
+        <div class="row">
+            <div class="col s2"></div>
+            <div class="input-field col s4">
+                <input placeholder="UserName" id="username" type="text" class="validate" required minlength="1">
+                <label for="name">Username</label>
+            </div>
+            <div class="input-field col s4">
+                <input placeholder="Password" id="password" type="password" class="validate" required minlength="1">
+                <label for="password">Password (At Least 6 Characters)</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s4"></div>
+            <div class="col s4">
+                <button class="waves-effect waves-light btn" form="login" id="login-button">Login</button>
+                <div id="login-fail">Unrecognized Username or Password</div>
+
+            </div>
+        </div>
+    </form>
+    {{/unless}}
+
+
+    {{#if login}}
+
+    <div>
+        <h4 class="text-center">Donation Address</h4>
+        <p class="p-text text-center">{{user.address}} <button class="waves-effect waves-light btn modal-trigger"
+                id="edit-address-button" href="#address-modal">Change Address</button>
+        </p>
+
+    </div>
 
     <div class="row">
         <form class="col s12" id="donation">
-            <div class="row">
-                <div class="input-field col s12">
-                    <input placeholder="Enter Your Name" id="name" type="text" class="validate" required minlength="1">
-                    <label for="name">Your Name</label>
-                </div>
-            </div>
-
-
             <div>
                 <h6 class="header">Item Information</h6>
                 <div class="row">
@@ -32,32 +78,245 @@
                         <input placeholder="Enter Item Name" id="item-name" type="text" class="validate" required
                             minlength="1">
                         <label for="item-name">Item name</label>
+                        <div id="item-name-validation">Enter a item name</div>
                     </div>
 
                     <div class="input-field col s4">
-                        <select>
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="1">S</option>
-                            <option value="2">M</option>
-                            <option value="3">L</option>
+                        <select id="item-size" required minlength="1">
+                            <option value="" id="size-default" selected>Choose your option</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
                         </select>
                         <label>Size</label>
+                        <div id="item-size-validation">Select a Size</div>
                     </div>
 
                     <div class="input-field col s4">
                         <input type="text" class="datepicker" placeholder="Date" id="expiration">
                         <label for="expiration">Expiration Date</label>
+                        <div id="expiration-validation">Select an Expiration Date</div>
                     </div>
                 </div>
 
-            </div>
+                <button type="submit" form="donation" value="Submit" class="waves-effect waves-light btn claim-btn"
+                    id="submit-donation" data-userid={{user.id}}>Submit</button> <span id="successful-donate">Your
+                    Donation has been Submitted</span>
 
-            <button type="submit" form="donation" value="Submit"
-                class="waves-effect waves-light btn claim-btn">Submit</button>
         </form>
     </div>
-
-
+    {{/if}}
 </div>
+
+<!-- Modal -->
+<div id="register" class="modal">
+    <div class="modal-content" id="register-content">
+        <h4 class="header">Create an Account</h4>
+        <div class="row">
+            <form class="col s12" id="user">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Enter a UserName" id="reg-username" type="text" class="regform validate"
+                            required minlength="1">
+                        <label for="reg-username">Username</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Enter a Password" id="reg-password" type="password" class="regform validate"
+                            required minlength="6">
+                        <label for="reg-password">Password (At Least 6 Characters)</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Enter Your Name" id="reg-name" type="text" class="validate" required
+                            minlength="1">
+                        <label for="name">Your Name</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="abc123@somemail.com" type="email" id="reg-email" pattern=".+@.+.com"
+                            size="30" required>
+                        <label for="email">E-mail Address</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="101 main street" id="reg-address" type="text" class="validate" required
+                            minlength="1">
+                        <label for="address">Address</label>
+                    </div>
+
+                    <div class="input-field col s2">
+                        <input placeholder="City" id="reg-city" type="text" class="validate" required minlength="1">
+                        <label for="city">City</label>
+                    </div>
+
+                    <div class="input-field col s2">
+                        <select id="reg-state" required class="validate">
+                            <option value="" disabled selected>State</option>
+                            <option value="AL">Alabama (AL)</option>
+                            <option value="AK">Alaska (AK)</option>
+                            <option value="AZ">Arizona (AZ)</option>
+                            <option value="AR">Arkansas (AR)</option>
+                            <option value="CA">California (CA)</option>
+                            <option value="CO">Colorado (CO)</option>
+                            <option value="CT">Connecticut (CT)</option>
+                            <option value="DE">Delaware (DE)</option>
+                            <option value="DC">District Of Columbia (DC)</option>
+                            <option value="FL">Florida (FL)</option>
+                            <option value="GA">Georgia (GA)</option>
+                            <option value="HI">Hawaii (HI)</option>
+                            <option value="ID">Idaho (ID)</option>
+                            <option value="IL">Illinois (IL)</option>
+                            <option value="IN">Indiana (IN)</option>
+                            <option value="IA">Iowa (IA)</option>
+                            <option value="KS">Kansas (KS)</option>
+                            <option value="KY">Kentucky (KY)</option>
+                            <option value="LA">Louisiana (LA)</option>
+                            <option value="ME">Maine (ME)</option>
+                            <option value="MD">Maryland (MD)</option>
+                            <option value="MA">Massachusetts (MA)</option>
+                            <option value="MI">Michigan (MI)</option>
+                            <option value="MN">Minnesota (MN)</option>
+                            <option value="MS">Mississippi (MS)</option>
+                            <option value="MO">Missouri (MO)</option>
+                            <option value="MT">Montana (MT)</option>
+                            <option value="NE">Nebraska (NE)</option>
+                            <option value="NV">Nevada (NV)</option>
+                            <option value="NH">New Hampshire (NH)</option>
+                            <option value="NJ">New Jersey (NJ)</option>
+                            <option value="NM">New Mexico (NM)</option>
+                            <option value="NY">New York (NY)</option>
+                            <option value="NC">North Carolina (NC)</option>
+                            <option value="ND">North Dakota (ND)</option>
+                            <option value="OH">Ohio (OH)</option>
+                            <option value="OK">Oklahoma (OK)</option>
+                            <option value="OR">Oregon (OR)</option>
+                            <option value="PA">Pennsylvania (PA)</option>
+                            <option value="RI">Rhode Island (RI)</option>
+                            <option value="SC">South Carolina (SC)</option>
+                            <option value="SD">South Dakota (SD)</option>
+                            <option value="TN">Tennessee (TN)</option>
+                            <option value="TX">Texas (TX)</option>
+                            <option value="UT">Utah (UT)</option>
+                            <option value="VT">Vermont</option>
+                            <option value="VA">Virginia</option>
+                            <option value="WA">Washington</option>
+                            <option value="WV">West Virginia</option>
+                            <option value="WI">Wisconsin</option>
+                            <option value="WY">Wyoming</option>
+                        </select>
+                        <label for="state">State</label>
+                    </div>
+
+                    <div class="input-field col s2">
+                        <input placeholder="Zip" id="reg-zip" type="text" class="validate" required minlength="1">
+                        <label for="zip">Zip</label>
+                    </div>
+                </div>
+
+
+                <button form="user" class="waves-effect waves-light btn" id="create-user">Submit</button>
+                <div id="repeated-user">Username exists</div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="address-modal" class="modal">
+    <div class="modal-content">
+        <h4 class="text-center">Edit Address</h4>
+        <div class="row">
+            <form id="address-edit-form" class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="101 main street" id="edit-address" type="text" class="validate" required
+                            minlength="1">
+                        <label for="edit-address">Address</label>
+                    </div>
+
+                    <div class="input-field col s2">
+                        <input placeholder="City" id="edit-city" type="text" class="validate" required minlength="1">
+                        <label for="edit-city">City</label>
+                    </div>
+
+                    <div class="input-field col s2">
+                        <select id="edit-state" required class="validate">
+                            <option value="" disabled selected>State</option>
+                            <option value="AL">Alabama (AL)</option>
+                            <option value="AK">Alaska (AK)</option>
+                            <option value="AZ">Arizona (AZ)</option>
+                            <option value="AR">Arkansas (AR)</option>
+                            <option value="CA">California (CA)</option>
+                            <option value="CO">Colorado (CO)</option>
+                            <option value="CT">Connecticut (CT)</option>
+                            <option value="DE">Delaware (DE)</option>
+                            <option value="DC">District Of Columbia (DC)</option>
+                            <option value="FL">Florida (FL)</option>
+                            <option value="GA">Georgia (GA)</option>
+                            <option value="HI">Hawaii (HI)</option>
+                            <option value="ID">Idaho (ID)</option>
+                            <option value="IL">Illinois (IL)</option>
+                            <option value="IN">Indiana (IN)</option>
+                            <option value="IA">Iowa (IA)</option>
+                            <option value="KS">Kansas (KS)</option>
+                            <option value="KY">Kentucky (KY)</option>
+                            <option value="LA">Louisiana (LA)</option>
+                            <option value="ME">Maine (ME)</option>
+                            <option value="MD">Maryland (MD)</option>
+                            <option value="MA">Massachusetts (MA)</option>
+                            <option value="MI">Michigan (MI)</option>
+                            <option value="MN">Minnesota (MN)</option>
+                            <option value="MS">Mississippi (MS)</option>
+                            <option value="MO">Missouri (MO)</option>
+                            <option value="MT">Montana (MT)</option>
+                            <option value="NE">Nebraska (NE)</option>
+                            <option value="NV">Nevada (NV)</option>
+                            <option value="NH">New Hampshire (NH)</option>
+                            <option value="NJ">New Jersey (NJ)</option>
+                            <option value="NM">New Mexico (NM)</option>
+                            <option value="NY">New York (NY)</option>
+                            <option value="NC">North Carolina (NC)</option>
+                            <option value="ND">North Dakota (ND)</option>
+                            <option value="OH">Ohio (OH)</option>
+                            <option value="OK">Oklahoma (OK)</option>
+                            <option value="OR">Oregon (OR)</option>
+                            <option value="PA">Pennsylvania (PA)</option>
+                            <option value="RI">Rhode Island (RI)</option>
+                            <option value="SC">South Carolina (SC)</option>
+                            <option value="SD">South Dakota (SD)</option>
+                            <option value="TN">Tennessee (TN)</option>
+                            <option value="TX">Texas (TX)</option>
+                            <option value="UT">Utah (UT)</option>
+                            <option value="VT">Vermont</option>
+                            <option value="VA">Virginia</option>
+                            <option value="WA">Washington</option>
+                            <option value="WV">West Virginia</option>
+                            <option value="WI">Wisconsin</option>
+                            <option value="WY">Wyoming</option>
+                        </select>
+                        <label for="edit-state">State</label>
+                    </div>
+
+                    <div class="input-field col s2">
+                        <input placeholder="Zip" id="edit-zip" type="text" class="validate" required minlength="1">
+                        <label for="edit-zip">Zip</label>
+                    </div>
+                    <button form="address-edit-form" class="waves-effect waves-light btn" id="submit-address-edit"
+                        data-userid={{user.id}}>Submit</button>
+
+            </form>
+        </div>
+
+
+    </div>
+</div>
+
 
 <script src="/js/donator.js"></script>

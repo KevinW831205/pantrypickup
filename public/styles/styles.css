@@ -21,12 +21,22 @@ nav{
   background-color: #F2F79E;
 } */
 
+.text-center{
+  text-align: center;
+}
+
 .content{
   background-color: white;
   margin-top: 20px;
-  padding: 20px 30px 0px 30px;
+  margin-bottom: 40px;
+  padding: 20px 30px 40px 30px;
+  overflow-y: auto;
+  height: 800px;
 }
 
+/* .fullopa::before{
+  opacity: 1;
+} */
 
 
 .back-img1{
@@ -67,7 +77,10 @@ th{
 
 td{
   font-family: 'Roboto', sans-serif;
+}
 
+.brand-logo{
+  font-family:'Roboto Slab', serif;
 }
 
 .color-scheme1{
@@ -128,3 +141,41 @@ td{
     width: 35%;
     height:35%;
   }
+
+#repeated-user{
+  color:red;
+  display: none;
+}
+
+#login-fail{
+  color: red;
+  display: none;
+  text-align: center;
+}
+
+#login-button{
+  width:100%;
+}
+
+#successful-donate{
+  color:#A8D4AD;
+  display: none;
+}
+
+
+#item-name-validation, #item-size-validation, #expiration-validation{
+  color: red;
+  display: none;
+}
+
+
+/* map */
+#map {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  height: 400px;
+  width: 650px;
+}
+
+/* end map */
