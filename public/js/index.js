@@ -134,8 +134,8 @@ new Chart(document.getElementById("myChart"), {
   options: {
     title: {
       display: true,
-      fontsize: 14,
-      color: "#000000",
+      fontSize: 18,
+      fontColor: "#000000",
       text: "Annual U.S. Food Waste Disposal by Sector (tons)"
     },
     legend: {
