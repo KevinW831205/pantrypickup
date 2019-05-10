@@ -1,3 +1,5 @@
+M.AutoInit();
+
 var map;
 
 function initMap() {
@@ -39,6 +41,3 @@ $(function () {
 
 
 });
-
-
-
