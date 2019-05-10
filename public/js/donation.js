@@ -35,6 +35,13 @@ $(function () {
 
       var cords = geocode.results[0].locations[0].displayLatLng
       map.setCenter(cords);
+      
+      var marker = new google.maps.Marker({
+        position: cords,
+        title: "Donater here"
+      });
+      marker.setMap(map)
+
     });
   });
 
