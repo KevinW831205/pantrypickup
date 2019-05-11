@@ -1,9 +1,9 @@
 var db = require("../models");
 
-module.exports = function (app) {
+module.exports = function(app) {
   // Load index page
-  app.get("/", function (req, res) {
-    db.Food.findAll({}).then(function (data) {
+  app.get("/", function(req, res) {
+    db.Food.findAll({}).then(function(data) {
       var hdbrsObj = {
         donations: data
       };
@@ -11,13 +11,13 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/donation", function (req, res) {
+  app.get("/donation", function(req, res) {
     db.Food.findAll({
       include: [db.User]
-    }).then(function (data) {
+    }).then(function(data) {
       var foodArr = [];
       for (var i = 0; i < data.length; i++) {
-        foodArr.push(data[i].dataValues)
+        foodArr.push(data[i].dataValues);
       }
 
       var administrator = false;
@@ -25,7 +25,7 @@ module.exports = function (app) {
       var renderObj = {
         donation: foodArr,
         admin: administrator
-      }
+      };
 
       //loading donations page
       res.render(
@@ -36,36 +36,31 @@ module.exports = function (app) {
     });
   });
 
-
-  app.get("/donator", function (req, res) {
-
+  app.get("/donator", function(req, res) {
     //loading donations page
-    res.render("donator", { login: false }
+    res.render(
+      "donator",
+      { login: false }
       //load in donation object to render in handlebars
     );
     // Render 404 page for any unmatched routes
   });
 
-  app.get("/donator/login/:id", function (req, res) {
-
+  app.get("/donator/login/:id", function(req, res) {
     db.User.findOne({
       where: { id: req.params.id }
-    }).then(function (userDB) {
-
+    }).then(function(userDB) {
       res.render("donator", {
         user: userDB.dataValues,
         login: true
-      })
-    })
-
+      });
+    });
   });
 
-  app.get("*", function (req, res) {
+  app.get("*", function(req, res) {
     res.render("404");
   });
-
 };
-
 
 // // Temporary seeding
 // db.Food.create({
