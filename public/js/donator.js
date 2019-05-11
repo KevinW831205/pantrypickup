@@ -75,6 +75,7 @@ $(document).ready(function () {
         if (DBusernames[i].user_name === registerInfo.user_name) {
           $("#reg-username").val("")
           $("#repeated-user").show()
+          return;
         }
       }
       $.ajax("/api/user", {
